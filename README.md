@@ -14,7 +14,7 @@ Setup Instructions:
 2. Install dependencies and run the app locally:
 	npm install
 	npm run dev
-3. You can preview the expected application functionality at:  
+3. You can preview the current application functionality at:  
 	https://xrdev.edu.metropolia.fi/hxrc_codetask_2025 
 
 Coding Tasks:
