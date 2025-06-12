@@ -1,0 +1,41 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+.container {
+  display: flex;
+  height: 100%;       /* now inherits 100% of viewport */
+  width: 100%;
+}
+.canvas-wrapper {
+  flex: 1;
+  position: relative;  /* so children can absolutely fill it */
+  background: #1e1e1e;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.canvas-wrapper canvas {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.controls {
+  position: absolute;
+  width: 420px;
+  height: 140px;
+  z-index: 9001;
+  bottom: 25vh;
+  left: 10vw;
+}
