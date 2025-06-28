@@ -40,8 +40,9 @@ export default function App() {
   const resetDeck = () => window.dispatchEvent(new Event('reset-deck'))
 
   return (
-    <div className="container">
-      <div className="canvas-wrapper">
+    <div className="min-h-screen bg-slate-100 flex flex-col items-center justify-start pt-8 pb-12 px-4">
+
+      <div className="w-full max-w-3xl aspect-[4/3] md:aspect-video max-h-[80vh] relative rounded-xl overflow-hidden shadow-lg bg-white">
         <Canvas
           className="full-canvas"
           shadows
@@ -82,15 +83,21 @@ export default function App() {
         </Canvas>
       </div>
 
-      <div className="controls">
+      <div className="flex flex-col items-center space-y-4 mt-4">
+
         <div className="deck-count">Deck: {deckCount} cards left</div>
-        <div className="buttons">
+        <div className="flex flex-wrap justify-center gap-2 ">
+
           {[1, 2, 3, 4, 5, 6, 7].map((n) => (
-            <button key={n} onClick={() => requestDeal(n)}>
+            <button key={n} onClick={() => requestDeal(n)}
+            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition"
+>
               Deal {n}
             </button>
           ))}
-          <button onClick={resetDeck}>
+          <button onClick={resetDeck}
+          className="bg-blue-500 hover:bg-gray-500 text-white px-4 py-2 rounded transition"
+>
             Reset Deck
           </button>
         </div>
