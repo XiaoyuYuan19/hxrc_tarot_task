@@ -1,6 +1,13 @@
-export function animateShuffle(groupRef, onComplete) {
+export function animateShuffle(groupRef,options, onComplete) {
   const cards = Array.from(groupRef.current.children)
   const total = cards.length
+  const {
+    liftAmount = 1.5,
+    liftTime = 300,
+    scatterTime = 400,
+    restackTime = 500,
+    staggerAmount = 0.02,
+  } = options || {};
 
   function tween(from, to, duration, apply, done) {
     const start = performance.now()

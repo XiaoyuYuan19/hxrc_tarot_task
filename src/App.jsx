@@ -43,6 +43,7 @@ export default function App() {
     <div className="min-h-screen bg-slate-100 flex flex-col items-center justify-start pt-8 pb-12 px-4">
 
       <div className="w-full max-w-3xl aspect-[4/3] md:aspect-video max-h-[80vh] relative rounded-xl overflow-hidden shadow-lg bg-white">
+
         <Canvas
           className="full-canvas"
           shadows

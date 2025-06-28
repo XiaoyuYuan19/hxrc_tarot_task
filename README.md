@@ -1,44 +1,23 @@
-# Helsinki XR Center – Coding Task 2025
+1️⃣ How you would improve the overall user experience?
+>User Experience Improvements:
 
-This task is intended to evaluate your frontend skills and understanding of interaction design, UI/UX, and code structure in a Three.js + React environment. 
-You will enhance an existing Tarot card deck viewer and improve its functionality and feel. 
+- Switched to TailwindCSS for styling, enabling clear, clean, and maintainable UI updates.
+- Applied responsive layout to ensure the application is usable and pleasant on both desktop and mobile.
+- Added soft background colors, rounded corners, and clear typography for a modern and comforting aesthetic.
+- Ensured card display scaling with appropriate aspect ratio (aspect-[4/3] on mobile and aspect-video on desktop) to avoid scroll issues while maintaining visual clarity.
+- Arranged control buttons in a grid layout with consistent padding for better interaction.
 
-> **Note:** This task is designed to be completed in **3–5 hours**.  
-> It should **not** take a full working day.  
-> Please prioritize clarity and interactivity over polish or completeness.
+✨ These improvements provide a clean, welcoming interface, making the tarot application easier and more comfortable to use across devices.
 
+2️⃣ How to gamify the Tarot app if given a full week to develop?
+>Gamification Ideas:
 
-Setup Instructions:
-1. Clone the repository: 
-	https://gitlab.com/hxrc_public/hxrc_codetask_2025 
-2. Install dependencies and run the app locally:
-	npm install
-	npm run dev
-3. You can preview the current application functionality at:  
-	https://xrdev.edu.metropolia.fi/hxrc_codetask_2025 
+- Add daily tarot challenge: users draw a card daily and log reflections, creating habit engagement.
+- Achievement system: e.g., “First Draw,” “10-Day Streak,” “Major Arcana Collector,” encouraging exploration.
+- Flip animation + haptic vibration when revealing cards to enhance tactile interaction.
+- Allow users to save spreads and write notes on interpretations for personal growth tracking.
+- Add soft background music or ambient sounds during the card draw to increase immersion.
+- Create shareable tarot spreads (image export) for social sharing while maintaining privacy.
+- Build story mode spreads where users unlock spreads progressively, gamifying learning about tarot card meanings.
 
-Coding Tasks:
-1. Create a better UI for the Tarot card application.
-	• Use your preferred styling method (CSS, styled-components, Tailwind, etc).
-	• Ensure responsive layout and a user-friendly experience on 
-	desktop and mobile
-2. Improve the shuffling logic.
-	• Ensure that each deal gives a truly randomized result.
-	• Avoid predictable orders after shuffling.
-
-3. Add a hover effect for dealt cards only.
-	• Implement the logic in: /src/animations/hovercard.js
-	• Cards should animate forward when hovered, improving visibility.
-
-4. Enhance the README file:
-	• Explain how you would improve the overall user experience.
-	• Propose ideas on how to gamify the Tarot app if given a 
-	full week to develop.
-
-5. Submit your task: 
-	• Upload your code to a repository (GitHub, GitLab, etc).
-	• Deploy the final app using a service like Vercel, Netlify, or GitHub Pages.
-	• Share both the repository link and the live demo link. 
-
-Questions? If you have any questions about the task, please contact:
-Juho Puurunen – juho.puurunen@metropolia.fi
+✨ These gamification ideas can increase user retention, encourage daily use, and deepen user engagement with the tarot app while maintaining its spiritual and reflective atmosphere.

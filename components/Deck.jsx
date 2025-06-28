@@ -10,8 +10,14 @@ export default function Deck({ onDeal, onDeckChange, groupRef }) {
   useEffect(() => {
     onDeckChange?.(deck.length)
   }, [deck.length, onDeckChange])
+   
+  const getPositionForCode = (code) => {
+    const idx = fullDeck.indexOf(code);
+    return [0, -idx * 0.02, idx * 0.001];
+  };
 
-   const shuffleDeck = () => {
+  const [shuffleIndex, setShuffleIndex] = useState(0);
+  const shuffleDeck = () => {
     animateShuffle(
       groupRef,
       {
@@ -22,12 +28,15 @@ export default function Deck({ onDeal, onDeckChange, groupRef }) {
         staggerAmount: 0.02,
       },
       () => {
+        console.log("Shuffle triggered, current deck:", deck);
+
         const arr = [...deck]
         for (let i = arr.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1))
           ;[arr[i], arr[j]] = [arr[j], arr[i]]
         }
         setDeck(arr)
+        setShuffleIndex(prev => prev + 1); // 强制触发重渲染
         onDeal([])  
       }
     )
@@ -71,10 +80,11 @@ export default function Deck({ onDeal, onDeckChange, groupRef }) {
     >
       {deck.map((code, idx) => (
         <Card
-          key={`${code}-${idx}`}
+          key={`${code}-${shuffleIndex}`}
           code={code}
           position={[0, -idx * 0.02, idx * 0.001]}
         />
+
       ))}
 
       {deck.length > 0 && (
