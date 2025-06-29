@@ -4,8 +4,18 @@ export default function FloatingCharm({ src }) {
   const [style, setStyle] = useState({});
 
   useEffect(() => {
-    const side = Math.random() > 0.5 ? 'left' : 'right';
-    const offset = Math.random() * 20 + 2; // 5% ~ 25% from the side
+    const isMobile = window.innerWidth < 768; // 判断是否是手机
+
+    let positionStyle = {};
+    if (isMobile) {
+      const position = Math.random() * 80 + 10; // 10% ~ 90%
+      positionStyle = { left: `${position}%` };
+    } else {
+      const side = Math.random() > 0.5 ? 'left' : 'right';
+      const position = Math.random() * 20 + 5 ; // 左 5~25%，右 75~95%
+      positionStyle = { [side]: `${position}%` };
+    }
+
     const size = Math.random() * 40 + 30; // 30px ~ 70px
     const duration = Math.random() * 5 + 5; // 5s ~ 10s
     const delay = Math.random() * 5; // 0s ~ 5s
@@ -14,12 +24,12 @@ export default function FloatingCharm({ src }) {
     setStyle({
       position: 'absolute',
       top: '-10%',
-      [side]: `${offset}%`,
       width: `${size}px`,
       height: 'auto',
       animation: `swing ${duration}s ease-in-out ${delay}s infinite alternate`,
       transformOrigin: 'top center',
-      '--amplitude': `${amplitude}deg`
+      '--amplitude': `${amplitude}deg`,
+      ...positionStyle
     });
   }, []);
 
