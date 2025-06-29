@@ -4,6 +4,19 @@
   0%, 100% { text-shadow: 0 0 5px #facc15, 0 0 1px #facc15; }
   50% { text-shadow: 0 0 10px #facc15, 0 0 2px #facc15; }
 }
+
 body {
   font-family: 'Cinzel', Georgia, serif;
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(calc(var(--amplitude) * -1));
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(var(--amplitude));
+  }
 }

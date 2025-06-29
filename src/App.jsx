@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState , useMemo } from 'react'
 import { Canvas } from '@react-three/fiber'
 import Deck from '../components/Deck'
 import Card from '../components/Card'
 import { animateDeal } from './animations/dealcards'
 import './App.css'
+import FloatingCharm from '../components/FloatingCharm';
 
 export default function App() {
   const [dealtCards, setDealtCards] = useState([])
@@ -40,6 +41,26 @@ export default function App() {
   const resetDeck = () => window.dispatchEvent(new Event('reset-deck'))
 
   const audioRef =  useRef();
+  const charms = [
+          "/assets/icons/pendant1.png",
+          "/assets/icons/pendant2.png",
+          "/assets/icons/pendant3.png"
+        ];
+
+  const floatingCharms = useMemo(() => {
+    return [...Array(10)].map((_, idx) => (
+      <FloatingCharm 
+        key={idx}
+        src={charms[Math.floor(Math.random() * charms.length)]}
+        style={{
+          left: Math.random() < 0.5 ? `${Math.random() * 10 + 2}%` : undefined,
+          right: Math.random() >= 0.5 ? `${Math.random() * 10 + 2}%` : undefined,
+          animationDuration: `${4 + Math.random() * 4}s`,
+          width: `${30 + Math.random() * 30}px`
+        }}
+      />
+    ));
+  }, []);
 
   useEffect(() => {
     const handleUserInteraction = () => {
@@ -53,6 +74,7 @@ export default function App() {
   }, []);
 
   return (
+    
 
     <div className="h-screen bg-cover bg-center flex flex-col items-center justify-center px-4 relative "  style={{
   backgroundImage: `url('/assets/cards/bg (4).jpg')`}}>
@@ -60,6 +82,12 @@ export default function App() {
 
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-0"></div>
       <audio ref={audioRef} src="/assets/audio/bg-music.mp3" autoPlay loop />
+
+      
+
+      {floatingCharms}
+
+
 
       
       <div className="relative z-10 flex flex-col items-center  w-full max-w-full">
