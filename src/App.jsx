@@ -75,7 +75,7 @@ export default function App() {
 
   return (
     
-    <div className="h-screen bg-cover bg-center flex flex-col items-center justify-center px-4 relative "  style={{
+    <div className="min-h-screen bg-cover bg-center flex flex-col items-center justify-center px-4 relative "  style={{
   backgroundImage: `url('/assets/cards/bg (4).jpg')`}}>
       
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-0"></div>
