@@ -56,15 +56,19 @@ export default function App() {
 
     <div className="h-screen bg-cover bg-center flex flex-col items-center justify-center px-4 relative "  style={{
   backgroundImage: `url('/assets/cards/bg (4).jpg')`}}>
+      
 
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-0"></div>
       <audio ref={audioRef} src="/assets/audio/bg-music.mp3" autoPlay loop />
 
       
       <div className="relative z-10 flex flex-col items-center  w-full max-w-full">
-        {/* <div className="w-full max-w-5xl aspect-[4/3] md:aspect-video max-h-[80vh] relative"> */}
+        
         <div className="w-full max-w-[90%] md:max-w-5xl lg:max-w-6xl aspect-[4/3] md:aspect-video max-h-[80vh] relative">
 
+          <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-yellow-300 drop-shadow-lg mb-2 text-center" style={{animation: "glow 3s ease-in-out infinite" }}
+>✨ Tarot Reading ✨</h2>
+          
           <Canvas
             className="full-canvas"
             shadows
