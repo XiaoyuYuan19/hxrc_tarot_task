@@ -39,68 +39,93 @@ export default function App() {
   
   const resetDeck = () => window.dispatchEvent(new Event('reset-deck'))
 
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.volume = 0.3; // 可调节音量 0~1
+      audio.loop = true;
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.log("Autoplay was prevented, user interaction required.");
+        });
+      }
+    }
+  }, []);
+
   return (
-    <div className="min-h-screen bg-slate-100 flex flex-col items-center justify-start pt-8 pb-12 px-4">
 
-      <div className="w-full max-w-3xl aspect-[4/3] md:aspect-video max-h-[80vh] relative rounded-xl overflow-hidden shadow-lg bg-white">
+    <div className="min-h-screen bg-cover bg-center flex flex-col items-center justify-start pt-8 pb-12 px-4 relative "  style={{
+  backgroundImage: `url('../public/assets/cards/bg (3).jpg')`}}>
 
-        <Canvas
-          className="full-canvas"
-          shadows
-          dpr={[1, 2]}
-          camera={{ position: [0, 2, 12], fov: 50 }}
-        >
-          <ambientLight intensity={0.6} />
-          <directionalLight
-            castShadow
-            position={[5, 5, 5]}
-            intensity={1}
-            shadow-mapSize-width={1024}
-            shadow-mapSize-height={1024}
-          />
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-0"></div>
+      <audio ref={audioRef} src="/assets/audio/bg-music.mp3" autoPlay loop />
 
-          <Deck 
-            onDeal={handleDeal}
-            onDeckChange={handleDeckChange}
-            groupRef={deckGroupRef}
-          />
+      
+      <div className="relative z-10 flex flex-col items-center">
+        <div className="w-full max-w-3xl aspect-[4/3] md:aspect-video max-h-[80vh] relative">
 
-          {dealtCards.map((code, idx) => {
-            const count = dealtCards.length
-            //const xOffset = -((count - 1) / 2) + idx * 1.2
-            const rotY = (idx - (count - 1) / 2) * 0.1
-            const origin = deckGroupRef.current.position
-            return (
-              <Card
-                key={`${code}-${idx}`}
-                ref={dealtRefs.current[idx]}
-                code={code}
-                dealt={true}
-                rotation={[0, rotY, 0]}
-                position={[origin.x, origin.y, origin.z]}
-              />
-            )
-          })}
-        </Canvas>
-      </div>
+          <Canvas
+            className="full-canvas"
+            shadows
+            dpr={[1, 2]}
+            camera={{ position: [0, 2, 12], fov: 50 }}
+          >
+            <ambientLight intensity={0.6} />
+            <directionalLight
+              castShadow
+              position={[5, 5, 5]}
+              intensity={1}
+              shadow-mapSize-width={1024}
+              shadow-mapSize-height={1024}
+            />
 
-      <div className="flex flex-col items-center space-y-4 mt-4">
+            <Deck 
+              onDeal={handleDeal}
+              onDeckChange={handleDeckChange}
+              groupRef={deckGroupRef}
+            />
 
-        <div className="deck-count">Deck: {deckCount} cards left</div>
-        <div className="flex flex-wrap justify-center gap-2 ">
+            {dealtCards.map((code, idx) => {
+              const count = dealtCards.length
+              //const xOffset = -((count - 1) / 2) + idx * 1.2
+              const rotY = (idx - (count - 1) / 2) * 0.1
+              const origin = deckGroupRef.current.position
+              return (
+                <Card
+                  key={`${code}-${idx}`}
+                  ref={dealtRefs.current[idx]}
+                  code={code}
+                  dealt={true}
+                  rotation={[0, rotY, 0]}
+                  position={[origin.x, origin.y, origin.z]}
+                />
+              )
+            })}
+          </Canvas>
+        </div>
 
-          {[1, 2, 3, 4, 5, 6, 7].map((n) => (
-            <button key={n} onClick={() => requestDeal(n)}
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition"
->
-              Deal {n}
+        <div className="flex flex-col items-center space-y-4 mt-4">
+
+          <div className="deck-count text-lg font-semibold text-yellow-200">Deck: {deckCount} cards left</div>
+
+          <div className="flex flex-wrap justify-center gap-2 ">
+
+            {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+              <button key={n} onClick={() => requestDeal(n)}
+              className="bg-purple-600/40 hover:bg-purple-700 text-yellow-200 font-semibold py-2 px-4 rounded-full shadow-md transition transform hover:scale-105"
+  >
+                Deal {n}
+              </button>
+            ))}
+            <button onClick={resetDeck}
+            className="bg-pink-600/40 hover:bg-pink-700 text-yellow-100 font-semibold px-4 py-2 rounded-lg shadow-md transition transform hover:scale-105"
+  >
+              Reset Deck
             </button>
-          ))}
-          <button onClick={resetDeck}
-          className="bg-blue-500 hover:bg-gray-500 text-white px-4 py-2 rounded transition"
->
-            Reset Deck
-          </button>
+          </div>
         </div>
       </div>
     </div>
