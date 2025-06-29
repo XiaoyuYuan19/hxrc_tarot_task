@@ -138,13 +138,27 @@ export default function App() {
 
             {[1, 2, 3, 4, 5, 6, 7].map((n) => (
               <button key={n} onClick={() => requestDeal(n)}
-              className="bg-purple-600/40 hover:bg-purple-700 text-yellow-200 font-semibold py-2 px-4 rounded-full shadow-md transition transform hover:scale-105"
+              className="border border-yellow-500
+    bg-black/30 hover:bg-black/50
+    text-yellow-300 hover:text-yellow-200
+    font-cinzel tracking-wide
+    px-4 py-2
+    shadow-sm hover:shadow-md
+    transition duration-300
+    uppercase"
   >
                 Deal {n}
               </button>
             ))}
             <button onClick={resetDeck}
-            className="bg-pink-600/40 hover:bg-pink-700 text-yellow-100 font-semibold px-4 py-2 rounded-lg shadow-md transition transform hover:scale-105"
+            className="border border-yellow-500
+    bg-black/30 hover:bg-black/50
+    text-yellow-300 hover:text-yellow-200
+    font-cinzel tracking-wide
+    px-4 py-2
+    shadow-sm hover:shadow-md
+    transition duration-300
+    uppercase"
   >
               Reset Deck
             </button>
