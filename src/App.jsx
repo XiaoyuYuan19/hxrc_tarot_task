@@ -39,26 +39,23 @@ export default function App() {
   
   const resetDeck = () => window.dispatchEvent(new Event('reset-deck'))
 
-  const audioRef = useRef(null);
+  const audioRef =  useRef();
 
   useEffect(() => {
-    const audio = audioRef.current;
-    if (audio) {
-      audio.volume = 0.3; // 可调节音量 0~1
-      audio.loop = true;
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          console.log("Autoplay was prevented, user interaction required.");
-        });
+    const handleUserInteraction = () => {
+      const audio = audioRef.current;
+      if (audio && audio.paused) {
+        audio.play().catch(err => console.log("Autoplay blocked:", err));
       }
-    }
+    };
+    window.addEventListener('click', handleUserInteraction);
+    return () => window.removeEventListener('click', handleUserInteraction);
   }, []);
 
   return (
 
     <div className="min-h-screen bg-cover bg-center flex flex-col items-center justify-start pt-8 pb-12 px-4 relative "  style={{
-  backgroundImage: `url('../public/assets/cards/bg (3).jpg')`}}>
+  backgroundImage: `url('/assets/cards/bg (3).jpg')`}}>
 
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-0"></div>
       <audio ref={audioRef} src="/assets/audio/bg-music.mp3" autoPlay loop />
@@ -71,7 +68,7 @@ export default function App() {
             className="full-canvas"
             shadows
             dpr={[1, 2]}
-            camera={{ position: [0, 2, 12], fov: 50 }}
+            camera={{ position: [0, 2, 12], fov: 45 }}
           >
             <ambientLight intensity={0.6} />
             <directionalLight
