@@ -2,6 +2,8 @@ import React, { forwardRef, useRef, useImperativeHandle } from 'react'
 import { useLoader } from '@react-three/fiber'
 import * as THREE from 'three'
 import { cardMap } from '../utils/cardList'
+import { addHoverEffect } from '../src/animations/hovercard';
+import { useEffect } from 'react';
 
 const Card = forwardRef(({
   code,
@@ -27,6 +29,14 @@ const Card = forwardRef(({
     new THREE.MeshStandardMaterial({ map: backTex }),
   ]
 
+  useEffect(() => {
+    if (meshRef.current) {
+      const hover = addHoverEffect(meshRef.current);
+      meshRef.current.userData.hoverIn = hover.hoverIn;
+      meshRef.current.userData.hoverOut = hover.hoverOut;
+    }
+  }, []);
+
   return (
     <mesh
       ref={meshRef}
@@ -35,6 +45,9 @@ const Card = forwardRef(({
       material={materials}
       castShadow
       receiveShadow
+      onPointerOver={() => meshRef.current?.userData.hoverIn?.()}
+      onPointerOut={() => meshRef.current?.userData.hoverOut?.()}
+
     >
       <boxGeometry args={[2.5, 3.5, 0.1]} />
     </mesh>
