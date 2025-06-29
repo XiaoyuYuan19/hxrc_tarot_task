@@ -75,20 +75,13 @@ export default function App() {
 
   return (
     
-
     <div className="h-screen bg-cover bg-center flex flex-col items-center justify-center px-4 relative "  style={{
   backgroundImage: `url('/assets/cards/bg (4).jpg')`}}>
       
-
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-0"></div>
       <audio ref={audioRef} src="/assets/audio/bg-music.mp3" autoPlay loop />
 
-      
-
       {floatingCharms}
-
-
-
       
       <div className="relative z-10 flex flex-col items-center  w-full max-w-full">
         

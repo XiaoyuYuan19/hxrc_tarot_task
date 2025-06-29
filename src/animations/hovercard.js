@@ -1,6 +1,6 @@
 // src/animations/hovercard.js
 
-export function addHoverEffect(mesh, offset = 0.3, speed = 0.15) {
+export function addHoverEffect(mesh, offset = 0.8, speed = 0.15) {
   if (!mesh) return;
 
   let targetZ = mesh.position.z;
