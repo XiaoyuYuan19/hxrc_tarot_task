@@ -8,11 +8,11 @@ export default function FloatingCharm({ src }) {
 
     let positionStyle = {};
     if (isMobile) {
-      const position = Math.random() * 80 + 10; // 10% ~ 90%
+      const position = Math.random() * 80 + 2; // 10% ~ 90%
       positionStyle = { left: `${position}%` };
     } else {
       const side = Math.random() > 0.5 ? 'left' : 'right';
-      const position = Math.random() * 20 + 5 ; // 左 5~25%，右 75~95%
+      const position = Math.random() * 20 + 2 ; // 左 5~25%，右 75~95%
       positionStyle = { [side]: `${position}%` };
     }
 
