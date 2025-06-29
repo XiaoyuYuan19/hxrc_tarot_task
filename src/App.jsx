@@ -140,7 +140,7 @@ export default function App() {
               <button key={n} onClick={() => requestDeal(n)}
               className="border border-yellow-500
     bg-black/30 hover:bg-black/50
-    text-yellow-300 hover:text-yellow-200
+    text-yellow-300 transform hover:scale-105
     font-cinzel tracking-wide
     px-4 py-2
     shadow-sm hover:shadow-md
@@ -152,7 +152,7 @@ export default function App() {
             ))}
             <button onClick={resetDeck}
             className="border border-yellow-500
-    bg-black/30 hover:bg-black/50
+    bg-black/30 transform hover:scale-105
     text-yellow-300 hover:text-yellow-200
     font-cinzel tracking-wide
     px-4 py-2
