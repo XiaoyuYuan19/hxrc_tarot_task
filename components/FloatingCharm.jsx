@@ -4,7 +4,7 @@ export default function FloatingCharm({ src }) {
   const [style, setStyle] = useState({});
 
   useEffect(() => {
-    const isMobile = window.innerWidth < 768; // 判断是否是手机
+    const isMobile = window.innerWidth < 768; // Determine if it's a mobile phone
 
     let positionStyle = {};
     if (isMobile) {
@@ -12,7 +12,7 @@ export default function FloatingCharm({ src }) {
       positionStyle = { left: `${position}%` };
     } else {
       const side = Math.random() > 0.5 ? 'left' : 'right';
-      const position = Math.random() * 20 + 2 ; // 左 5~25%，右 75~95%
+      const position = Math.random() * 20 + 2 ; 
       positionStyle = { [side]: `${position}%` };
     }
 
