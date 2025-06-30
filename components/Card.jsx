@@ -9,6 +9,7 @@ const Card = forwardRef(({
   code,
   position = [0, 0, 0],
   rotation = [0, 0, 0],
+  dealt = false, 
 }, ref) => {
   const meshRef = useRef()
   useImperativeHandle(ref, () => meshRef.current, [])
@@ -30,6 +31,8 @@ const Card = forwardRef(({
   ]
 
   useEffect(() => {
+    
+    if (!dealt) return; 
     if (meshRef.current) {
       const hover = addHoverEffect(meshRef.current);
       meshRef.current.userData.hoverIn = hover.hoverIn;
